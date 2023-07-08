@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import styles from './Filter.module.css';
 
 export class Filter extends Component {
-  static propTypes = {};
+  static propTypes = {
+    onFilterChange: PropTypes.func,
+  };
 
   handleChange = e => {
     const { onFilterChange } = this.props;

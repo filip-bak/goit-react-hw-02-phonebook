@@ -4,7 +4,10 @@ import React, { Component } from 'react';
 import styles from './ContactForm.module.css';
 
 export class ContactForm extends Component {
-  static propTypes = {};
+  static propTypes = {
+    onFormSubmit: PropTypes.func,
+  };
+
   state = {
     name: '',
     number: '',

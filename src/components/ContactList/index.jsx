@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import styles from './ContactList.module.css';
 
 export class ContactList extends Component {
-  static propTypes = {};
+  static propTypes = {
+    contacts: PropTypes.object,
+  };
 
   render() {
     const { contacts } = this.props;
