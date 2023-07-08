@@ -4,7 +4,7 @@ import styles from './ContactList.module.css';
 
 export class ContactList extends Component {
   static propTypes = {
-    contacts: PropTypes.object,
+    contacts: PropTypes.arrayOf(PropTypes.object),
   };
 
   render() {
