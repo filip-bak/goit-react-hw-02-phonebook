@@ -37,6 +37,8 @@
 }
 .input::placeholder {
   color: transparent;
+  opacity: 0;
+  user-select: none;
 }
 .input:not(:placeholder-shown):valid + .status {
   background-color: rgb(94, 206, 50);
