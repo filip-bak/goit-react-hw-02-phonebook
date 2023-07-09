@@ -12,12 +12,18 @@ export class Filter extends Component {
     const filterValue = e.target.value;
     onFilterChange(filterValue);
   };
+
   render() {
     return (
       <div>
         <label className={styles.label}>
           Find contacts by name
-          <input type="text" name="filter" onChange={this.handleChange} />
+          <input
+            className={styles.input}
+            type="text"
+            name="filter"
+            onChange={this.handleChange}
+          />
         </label>
       </div>
     );

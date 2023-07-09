@@ -8,30 +8,46 @@ import ContactList from './ContactList';
 
 export class App extends Component {
   state = {
-    contacts: [{ id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' }],
+    contacts: [],
     filter: '',
   };
 
   handleFormSubmit = (name, number) => {
     const id = nanoid(7);
+
     const newContact = {
       id,
       name,
       number,
     };
+
+    // validation
+    for (const contact of this.state.contacts) {
+      if (contact.name === name) {
+        return alert(`${name} is already in contacts.`);
+      }
+    }
+
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
     }));
   };
 
-  handleFilterChange = newFilter => {
+  handleFilterChange = searchQuery => {
     this.setState(prevState => ({
-      filter: newFilter,
+      filter: searchQuery.toLowerCase(),
+    }));
+  };
+
+  handleRemoveContact = itemName => {
+    this.setState(prevState => ({
+      contacts: this.state.contacts.filter(({ name }) => {
+        return name !== itemName;
+      }),
     }));
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="wrapper">
         <Section title="Phonebook">
@@ -40,7 +56,11 @@ export class App extends Component {
 
         <Section title="Contacts">
           <Filter onFilterChange={this.handleFilterChange} />
-          <ContactList contacts={this.state.contacts} />
+          <ContactList
+            contacts={this.state.contacts}
+            filterQuery={this.state.filter}
+            onRemoveContact={this.handleRemoveContact}
+          />
         </Section>
       </div>
     );
